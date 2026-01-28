@@ -1,5 +1,6 @@
 import pickle
 import flask
+import pandas as pd
 
 from flask import Flask, request, Response, jsonify
 
@@ -37,8 +38,14 @@ def prediction():
     LoanAmount = loan_req['LoanAmount'] / 1000
 
     # Making predictions 
-    prediction = clf.predict( 
-        [[Gender, Married, ApplicantIncome, LoanAmount, Credit_History]])
+    prediction_df = pd.DataFrame({
+        'Gender': [Gender],
+        'Married': [Married],
+        'ApplicantIncome': [ApplicantIncome],
+        'LoanAmount': [LoanAmount],
+        'Credit_History': [Credit_History]
+    })
+    prediction = clf.predict(prediction_df)
 
     if prediction == 0:
         pred = 'Rejected'
