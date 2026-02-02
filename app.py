@@ -11,4 +11,4 @@ def hello_world():
 
 @app.route("/ping", methods=['GET'])
 def ping():
-    return {"message": "Hi there, I'm working!!"}
+    return {"message": "Hi there, I'm working hard!!"}
