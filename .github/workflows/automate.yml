@@ -24,4 +24,4 @@ jobs:
             
             - name: Run test cases
               run:
-                pytest loan_app_cicd.py
+                pytest test_loan_app_cicd.py
